@@ -1,16 +1,28 @@
 <template>
-  <img alt="Vue logo" src="./assets/logo.png" />
-  <HelloWorld msg="Welcome to Your Vue.js + TypeScript App" />
+  <div v-hello="{ text: 'Jacek' }" @custom-event="listener">
+    {{ sayHello }}
+  </div>
 </template>
 
 <script lang="ts">
-import { defineComponent } from "vue";
-import HelloWorld from "./components/HelloWorld.vue";
+import { defineComponent, ref } from "vue";
 
 export default defineComponent({
   name: "App",
-  components: {
-    HelloWorld,
+
+  setup() {
+    const sayHello = ref("");
+    const listener = ($value: string) => {
+      sayHello.value = $value;
+    };
+
+    const test = ($value: string) => console.log($value);
+
+    return {
+      listener,
+      test,
+      sayHello,
+    };
   },
 });
 </script>
