@@ -16,11 +16,8 @@ export default defineComponent({
       sayHello.value = $value;
     };
 
-    const test = ($value: string) => console.log($value);
-
     return {
       listener,
-      test,
       sayHello,
     };
   },
